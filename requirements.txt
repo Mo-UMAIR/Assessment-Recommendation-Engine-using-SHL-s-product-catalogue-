@@ -1,0 +1,9 @@
+requests
+beautifulsoup4
+fastapi
+uvicorn
+chromadb
+sentence-transformers
+streamlit
+pandas
+playwright
