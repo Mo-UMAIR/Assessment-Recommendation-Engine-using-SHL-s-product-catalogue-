@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_URL = "http://127.0.0.1:8000"
+API_URL = "http://13.233.25.185:8000"
 
 st.set_page_config(page_title="SHL Assessment Recommendations", page_icon="📝")
 
@@ -47,3 +47,5 @@ if st.button("Get Recommendations"):
 st.sidebar.title("About")
 st.sidebar.info("This system uses local embeddings and ChromaDB to vector-search through the SHL Product Catalog.")
 st.sidebar.text("Developed for SHL GenAI Task.")
+
+## API_URL = "http://127.0.0.1:8000"
