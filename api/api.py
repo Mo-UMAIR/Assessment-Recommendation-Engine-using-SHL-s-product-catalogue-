@@ -16,7 +16,7 @@ def startup_event():
         print("Connecting to ChromaDB...")
         client = chromadb.PersistentClient(path="./data/chroma_db")
         sentence_transformer_ef = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
-        collection = client.get_collection(name="shl_assessments", embedding_function=sentence_transformer_ef)
+        collection = client.get_collection(name="shl_assessments")
         print("Connected to SHL collection.")
     except Exception as e:
         print(f"Warning: Could not initialize ChromaDB. Make sure you've built the DB first. Error: {e}")
