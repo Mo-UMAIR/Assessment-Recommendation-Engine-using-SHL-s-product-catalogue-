@@ -10,6 +10,34 @@ The objective was to build an intelligent recommendation system that takes a nat
 
 ## 2. Architecture & Components
 
+### 2.0 System Flow Diagram
+
+```mermaid
+graph TD
+    %% Define Styles
+    classDef data fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef process fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef db fill:#bfb,stroke:#333,stroke-width:2px;
+    classDef user fill:#fbf,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+
+    %% Nodes
+    A[SHL Website Product Catalog] -->|Web Scraping\nBeautifulSoup & Requests| B(shl_catalog.json)
+    B -->|Text Embedding\nall-MiniLM-L6-v2| C[(ChromaDB\nVector Database)]
+    
+    D([User / Streamlit UI]) -.->|Job Description Query| E{FastAPI Backend}
+    E -->|1. Compute Query Embedding| C
+    C -->|2. Return Top K Similar Tests| E
+    
+    E -->|3. Domain Balancing Logic| F[Filtered Recommendations\nTop 5-10 tests]
+    F -.->|JSON Response| D
+    
+    %% Apply Styles
+    class A,B data
+    class E,F process
+    class C db
+    class D user
+```
+
 ### 2.1 Data Pipeline (Scraping)
 The data ingestion pipeline relies on `BeautifulSoup` and `requests`. 
 - Over 300+ pages of SHL assessments were traversed.
